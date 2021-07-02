@@ -3,11 +3,11 @@ function DanhSachNhanVien() {
     this.themNhanVien = function(nhanVien) {
         this.arr.push(nhanVien)
     }
-    this.timKiemNV = function(dsnv, mangTimKiem) {
-    return dsnv.filter(function(arr) {
-        return arr.xepLoai.toLowerCase().indexOf(mangTimKiem.toLowerCase()) !== -1;
-    })
-}
+    this.timKiemSP = function(dsnv, chuoiKT) {
+        return dsnv.filter(function(nhanVien) {
+          return nhanVien.xepLoai.toLowerCase().indexOf(chuoiKT.toLowerCase()) !== -1;
+        })
+      }
 }
 
 DanhSachNhanVien.prototype.timViTri = function(taiKhoanNV) {

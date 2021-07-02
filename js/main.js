@@ -58,13 +58,12 @@ var hienThiDanhSachNV = function (arr) {
 };
 
 // lưu vào localStorage
-var setLocalStorage = function () {
-  localStorage.setItem("DSNV", JSON.stringify(dsnv.arr));
+var setLocalStorage = function (dsnv) {
+  localStorage.setItem("DSNV", JSON.stringify(dsnv));
 };
-var getLocalStorage = function () {
+function getLocalStorage() {
   if (localStorage.getItem("DSNV")) {
-    dsnv.arr = JSON.parse(localStorage.getItem("DSNV"));
-    hienThiDanhSachNV(dsnv.arr);
+    return dsnv.arr = JSON.parse(localStorage.getItem("DSNV"));
   }
 };
 getLocalStorage();
@@ -299,11 +298,10 @@ var themNV = getElm("btnThemNV").addEventListener("click", function () {
   hienThiDanhSachNV(dsnv.arr);
   setLocalStorage();
 });
+getElm('searchName').addEventListener('keyup', function() {
+  var arr = getLocalStorage()
+  var chuoiKT = getLocalStorage('searchName')
 
-getElm('searchName').addEventListener("keyup", function() {
-  var nguoiNhanVien = getLocalStorage();
-  var chuoiXepLoai = getElm('searchName').value
-
-  var mangTimKiem = dsnv.timViTri(nguoiNhanVien, chuoiXepLoai)
+  var mangTimKiem = dsnv.timKiemSP(arr, chuoiKT)
   hienThiDanhSachNV(mangTimKiem)
 })
