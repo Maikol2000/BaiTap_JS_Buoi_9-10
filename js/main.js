@@ -58,18 +58,19 @@ var hienThiDanhSachNV = function (arr) {
 };
 
 // lưu vào localStorage
-var setLocalStorage = function () {
+var setLocalStorage = function() {
   localStorage.setItem("DSNV", JSON.stringify(dsnv.arr));
+
 };
 var getLocalStorage = function () {
   if (localStorage.getItem("DSNV")) {
       dsnv.arr = JSON.parse(localStorage.getItem("DSNV"));
       hienThiDanhSachNV(dsnv.arr);
+      return dsnv.arr
   }
 };
 
 getLocalStorage();
-
 
 // sửa danh sách
 function _suaDanhSachNV(index) {
@@ -299,4 +300,12 @@ var themNV = getElm("btnThemNV").addEventListener("click", function () {
   dsnv.themNhanVien(nhanVien);
   hienThiDanhSachNV(dsnv.arr);
   setLocalStorage();
+});
+
+getElm('searchName').addEventListener('keyup', function () {
+  var mangNV = getLocalStorage();
+  var chuoiTK = getElm('searchName').value;
+
+  var mangTimKiem = dsnv.timKiemNV(mangNV, chuoiTK)
+  hienThiDanhSachNV(mangTimKiem);
 });
