@@ -227,7 +227,7 @@ var themNV = getElm("btnThemNV").addEventListener("click", function () {
       4,
       6
     );
-
+      // if(!isValid) return
   isValid = validator.kiemTraOP(
     chucVu,
     "tbChucVu",
@@ -238,7 +238,7 @@ var themNV = getElm("btnThemNV").addEventListener("click", function () {
     validator.kiemTraDoDaiSO(
       gioLam,
       "tbGiolam",
-      "Vui lòng nhập lại thời gian làm",
+      "Vui lòng nhập lại thời gian làm cho phép từ 80 giờ đến 200 giờ làm",
       80,
       200
     );
@@ -262,6 +262,8 @@ var themNV = getElm("btnThemNV").addEventListener("click", function () {
       "tbMatKhau",
       "Nhập ít nhất 1 ký tự số, 1 ký tự in hoa, 1 ký tự đặc biệt"
     );
+    
+
   isValid &=
     validator.kiemTraRong(ngayLam, "tbNgay", "Không để trống") &&
     validator.kiemTraKiTuNL(
@@ -275,7 +277,7 @@ var themNV = getElm("btnThemNV").addEventListener("click", function () {
     validator.kiemTraDoDaiSO(
       luongCB,
       "tbLuongCB",
-      "Vui lòng nhập lại lương",
+      "Vui lòng nhập lương từ 1,000,000 đến 20,000,000",
       1000000,
       20000000
     );
